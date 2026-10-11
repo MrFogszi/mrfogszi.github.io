@@ -2,6 +2,8 @@
   "name": "Roland Kerékgyártó",
   "title": "Software Test Engineer at thyssenkrupp",
   "location": "Budapest, Hungary",
+  "linkedin_url": "https://www.linkedin.com/in/roland-ker%C3%A9kgy%C3%A1rt%C3%B3-b46793140/",
+  "email": "roland.kerekgyarto@gmail.com",
   "skills":[
     {
       "name": "c++",
@@ -34,6 +36,10 @@
     {
       "name": "Statistical Process Control (SPC)",
       "level": 50
+    },
+    {
+      "name": "Artifical Intelligence",
+      "level": 65
     }
   ],
   "work_experience": [
@@ -52,10 +58,12 @@
          "Developing tools in C/C++, python",
          "Create documentation and work instructions",
          "Participate customer workshop",
-         "Mentoring as Chapter Lead"
+         "Mentoring as Chapter Lead",
+         "Working with AI",
+         "Developing AI assisted tools"
       ],
       "skills":[
-        "c++", "python", "agile", "jira", "software testing"
+        "c++", "python", "agile", "jira", "software testing", "Artifical Intelligence"
       ]
     },
     {
@@ -63,7 +71,7 @@
       "position": "Process Engineer",
       "url": "",
       "start_date": "2017-10-02",
-      "end_date": "2019-01-01/",
+      "end_date": "2019-01-01",
       "summary": "Control, monitor and support vacuum and wave soldering High Power Semiconductors, IGBTs",
       "highlights": [
         "Process controlling and improvement",
@@ -88,9 +96,9 @@
       "honors": [],
       "graduation_date": "2017-06-30",
       "thesis": {
-        "title": "Protonnyalábos mikromegmunkálás PTFE felületen",
+        "title": "Proton Beam Writing PTFE surface",
         "url": "",
-        "summary": "Nem vót egyszerű"
+        "summary": ""
       }
     },
     {
@@ -103,10 +111,25 @@
       "honors": [],
       "graduation_date": "2015-06-30",
       "thesis": {
-        "title": "Napelemek öregedésének vizsgálata",
+        "title": "The examination of ageing of solar cells",
         "url": "",
         "summary": ""
       }
+    }
+  ],
+  "certifications": [
+    {
+      "category": "ISTQB",
+      "levels": [
+        { "name": "Foundation Level",
+          "date": "2023-05",
+          "id": "H23051932/CTFL"
+        },
+        {"name": "Foundation Level Agile Testing",
+          "date": "2023-09",
+          "id": "H23092935/CTFL-AT"
+        }
+      ]
     }
   ]
 }

@@ -4,8 +4,11 @@ Vue.createApp({
       name: '',
       title: '',
       location: '',
+      linkedin_url: '',
+      email: '',
       jobs: [],
-      skills: []
+      skills: [],
+      certifications: []
     };
   },
   methods: {
@@ -48,9 +51,12 @@ Vue.createApp({
       this.name = portfolio.name;
       this.title = portfolio.title;
       this.location = portfolio.location;
+      this.linkedin_url = portfolio.linkedin_url;
+      this.email = portfolio.email;
       this.jobs = portfolio.work_experience;
       this.skills = portfolio.skills;
       this.education = portfolio.education;
+      this.certifications = portfolio.certifications;
     } catch (error) {
       console.error('Could not load portfolio data:', error);
     }

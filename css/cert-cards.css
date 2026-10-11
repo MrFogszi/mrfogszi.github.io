@@ -1,0 +1,56 @@
+.certification-list {
+  display: grid;
+  gap: 1rem;
+  max-width: 760px;
+}
+
+.certification-card {
+  padding: 1.25rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+}
+
+.certification-levels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+}
+
+.certification-level-card {
+  padding: 1.25rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+}
+
+.certification-level-card__header,
+.certification-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.certification-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.certification-card__location,
+.certification-card__date {
+  margin: 0;
+  color: #666;
+}
+
+.certification-card__degrees {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .certification-card__header {
+    flex-direction: column;
+  }
+}

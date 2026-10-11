@@ -5,16 +5,26 @@
   <title>The Portfolio</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script defer src="./js/app.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
     <div class="layout" id="app">
         <aside class="overview">
           <h2> {{ name }} </h2>
           <p> {{ title  }}</p>
-          <p> {{ location }}</p>
+          <p><i class="fa-solid fa-location-dot"></i> {{ location }}</p>
+          <p v-if="linkedin_url">
+              <i class="fa-brands fa-linkedin"></i>
+            <a :href="linkedin_url" target="_blank" rel="noopener noreferrer">
+              {{ name }}
+            </a>
+          </p>
+          <p v-if="email">
+              <i class="fa-solid fa-at"></i> {{ email }}
+          </p>
         </aside>
         <main class="events">
-            <h1>Work Experience</h1>
+            <h1><i class="fa-solid fa-business-time"></i>Work Experience</h1>
             <section class="job-list">
               <article class="job-card" v-for="job in jobs" :key="job.company + job.start_date">
                 <header class="job-card__header">
@@ -60,7 +70,7 @@
                 </div>
               </article>
             </section>
-            <h1>Trained and breed</h1>
+            <h1><i class="fa-solid fa-graduation-cap"></i> Education</h1>
             <section class="education-list">
               <article
                 class="education-card"
@@ -79,15 +89,13 @@
                   </div>
 
                   <p class="education-card__date">
-                    Graduated {{ school.graduation_date }}
+                    <i class="fa-regular fa-calendar-check"></i> {{ school.graduation_date }}
                   </p>
                 </header>
 
-                <ul class="education-card__degrees">
-                  <li v-for="degree in school.degrees" :key="degree">
-                    {{ degree }}
-                  </li>
-                </ul>
+                <p v-for="degree in school.degrees" :key="degree" class="education-card__degrees">
+                <i class="fa-solid fa-building-columns"></i> {{ degree }}
+                </p>
 
                 <ul v-if="school.honors.length" class="education-card__honors">
                   <li v-for="honor in school.honors" :key="honor">
@@ -108,6 +116,20 @@
                 </div>
               </article>
             </section>
+            <section class="certification-list">
+                <article class="certification-card" v-for="certification in certifications">
+                    <div>
+                        <h2 class="certification-card__header"> {{ certification.category }}</h2>
+                        <div class="certification-levels">
+                            <div v-for="level in certification.levels" class="certification-level-card">
+                                <header class="certification-level-card__header"> {{ level.name }} </header>
+                                <p> <i class="fa-regular fa-calendar-check"></i> {{ level.date }} </p>
+                                <p> <i class="fa-solid fa-award"></i> {{ level.id }} </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
         </main>
     </div>
 
@@ -115,4 +137,5 @@
 <!-- Stylesheet -->
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/edu-cards.css">
+<link rel="stylesheet" href="css/cert-cards.css">
 </html>
