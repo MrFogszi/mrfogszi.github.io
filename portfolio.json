@@ -1,0 +1,112 @@
+{
+  "name": "Roland Kerékgyártó",
+  "title": "Software Test Engineer at thyssenkrupp",
+  "location": "Budapest, Hungary",
+  "skills":[
+    {
+      "name": "c++",
+      "level": 60
+    },
+    {
+      "name": "python",
+      "level": 80
+    },
+    {
+      "name": "agile",
+      "level": "75"
+    },
+    {
+      "name": "jira",
+      "level": 75
+    },
+    {
+      "name": "software testing",
+      "level": 90
+    },
+    {
+      "name": "physics",
+      "level": 80
+    },
+    {
+      "name": "vacuum technology",
+      "level": 60
+    },
+    {
+      "name": "Statistical Process Control (SPC)",
+      "level": 50
+    }
+  ],
+  "work_experience": [
+    {
+      "company": "thyssenkrupp Presta AG",
+      "position": "Software Test Engineer",
+      "url": "",
+      "start_date": "2019-01-02",
+      "end_date": "Present",
+      "summary": "Testing embedded ECU softwares in HIL environment.",
+      "highlights": [
+         "Maintain and develop testing tools and functions",
+         "Training newcomers",
+         "Review requirements",
+         "Kickoff features for testing",
+         "Developing tools in C/C++, python",
+         "Create documentation and work instructions",
+         "Participate customer workshop",
+         "Mentoring as Chapter Lead"
+      ],
+      "skills":[
+        "c++", "python", "agile", "jira", "software testing"
+      ]
+    },
+    {
+      "company": "Infineon Technologies Cegléd",
+      "position": "Process Engineer",
+      "url": "",
+      "start_date": "2017-10-02",
+      "end_date": "2019-01-01/",
+      "summary": "Control, monitor and support vacuum and wave soldering High Power Semiconductors, IGBTs",
+      "highlights": [
+        "Process controlling and improvement",
+        "SPC analysis and improvement",
+        "Maintanence supporting",
+        "Work and maintanence instructions",
+        "Problem handling and solving"
+      ],
+      "skills":[
+        "physics", "vacuum technology", "Statistical Process Control (SPC)"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Debrecen",
+      "location": "Debrecen, Hungary",
+      "url": "",
+      "degrees": [
+        "Materials Science, MSc"
+      ],
+      "honors": [],
+      "graduation_date": "2017-06-30",
+      "thesis": {
+        "title": "Protonnyalábos mikromegmunkálás PTFE felületen",
+        "url": "",
+        "summary": "Nem vót egyszerű"
+      }
+    },
+    {
+      "institution": "University of Debrecen",
+      "location": "Debrecen, Hungary",
+      "url": "",
+      "degrees": [
+        "Physicist, BSc"
+      ],
+      "honors": [],
+      "graduation_date": "2015-06-30",
+      "thesis": {
+        "title": "Napelemek öregedésének vizsgálata",
+        "url": "",
+        "summary": ""
+      }
+    }
+  ]
+}

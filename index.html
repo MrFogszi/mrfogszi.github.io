@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Portfolio</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script defer src="./js/app.js"></script>
+</head>
+<body>
+    <div class="layout" id="app">
+        <aside class="overview">
+          <h2> {{ name }} </h2>
+          <p> {{ title  }}</p>
+          <p> {{ location }}</p>
+        </aside>
+        <main class="events">
+            <h1>Work Experience</h1>
+            <section class="job-list">
+              <article class="job-card" v-for="job in jobs" :key="job.company + job.start_date">
+                <header class="job-card__header">
+                  <div>
+                    <h2>{{ job.position }}</h2>
+                    <a v-if="job.url" :href="job.url" target="_blank" rel="noopener noreferrer">
+                      {{ job.company }}
+                    </a>
+                    <h3 v-else>{{ job.company }}</h3>
+                  </div>
+
+                  <p class="job-card__dates">
+                    {{ job.start_date }} – {{ get_end_date(job) }}
+                  </p>
+                </header>
+
+                <p>{{ job.summary }}</p>
+
+                <ul>
+                  <li v-for="highlight in job.highlights" :key="highlight">
+                    {{ highlight }}
+                  </li>
+                </ul>
+                <div v-for="skill in job.skills">
+                    <div class="skill__labels">
+                      <span>{{ skill }}</span>
+                      <span>{{ get_level_label(get_skill_level(skill)) }}</span>
+                    </div>
+
+                    <div
+                      class="skill__track"
+                      role="progressbar"
+                      :aria-label="skill"
+                      :aria-valuenow="get_skill_level(skill)"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <div
+                        class="skill__fill"
+                        :style="{ width: get_skill_level(skill) + '%' }"
+                      ></div>
+                    </div>
+                </div>
+              </article>
+            </section>
+            <h1>Trained and breed</h1>
+            <section class="education-list">
+              <article
+                class="education-card"
+                v-for="school in education"
+                :key="school.institution + school.graduation_date"
+              >
+                <header class="education-card__header">
+                  <div>
+                    <h2 v-if="!school.url">{{ school.institution }}</h2>
+                    <h2 v-else>
+                      <a :href="school.url" target="_blank" rel="noopener noreferrer">
+                        {{ school.institution }}
+                      </a>
+                    </h2>
+                    <p class="education-card__location">{{ school.location }}</p>
+                  </div>
+
+                  <p class="education-card__date">
+                    Graduated {{ school.graduation_date }}
+                  </p>
+                </header>
+
+                <ul class="education-card__degrees">
+                  <li v-for="degree in school.degrees" :key="degree">
+                    {{ degree }}
+                  </li>
+                </ul>
+
+                <ul v-if="school.honors.length" class="education-card__honors">
+                  <li v-for="honor in school.honors" :key="honor">
+                    {{ honor }}
+                  </li>
+                </ul>
+                <div v-if="school.thesis" class="education-card__thesis">
+                  <h3>Thesis</h3>
+
+                  <p v-if="!school.thesis.url">{{ school.thesis.title }}</p>
+                  <p v-else>
+                    <a :href="school.thesis.url" target="_blank" rel="noopener noreferrer">
+                      {{ school.thesis.title }}
+                    </a>
+                  </p>
+
+                  <p v-if="school.thesis.summary">{{ school.thesis.summary }}</p>
+                </div>
+              </article>
+            </section>
+        </main>
+    </div>
+
+</body>
+<!-- Stylesheet -->
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/edu-cards.css">
+</html>
