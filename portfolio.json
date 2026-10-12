@@ -2,8 +2,17 @@
   "name": "Roland Kerékgyártó",
   "title": "Software Test Engineer at thyssenkrupp",
   "location": "Budapest, Hungary",
+  "date_of_birth": "1993-03-16",
   "linkedin_url": "https://www.linkedin.com/in/roland-ker%C3%A9kgy%C3%A1rt%C3%B3-b46793140/",
   "email": "roland.kerekgyarto@gmail.com",
+  "about": "Software test engineer by profession, physicist by training. I bring an analytical mindset and a practical, detail-oriented approach to solving problems. Curious and adaptable, I’m eager to keep learning and take on new challenges across different fields.",
+  "traits": [
+    "Innovative",
+    "Good problem solution",
+    "Easy to adapt",
+    "Proactive",
+    "Enthusiastic"
+  ],
   "skills":[
     {
       "name": "c++",
@@ -14,12 +23,8 @@
       "level": 80
     },
     {
-      "name": "agile",
-      "level": "75"
-    },
-    {
       "name": "jira",
-      "level": 75
+      "level": 70
     },
     {
       "name": "software testing",
@@ -39,12 +44,12 @@
     },
     {
       "name": "Artifical Intelligence",
-      "level": 65
+      "level": 40
     }
   ],
   "work_experience": [
     {
-      "company": "thyssenkrupp Presta AG",
+      "company": "thyssenkrupp Components Technology Hungary Kft.",
       "position": "Software Test Engineer",
       "url": "",
       "start_date": "2019-01-02",
@@ -58,12 +63,13 @@
          "Developing tools in C/C++, python",
          "Create documentation and work instructions",
          "Participate customer workshop",
-         "Mentoring as Chapter Lead",
+         "Mentoring as Chapter Lead (2024 - Present)",
          "Working with AI",
          "Developing AI assisted tools"
       ],
+      "tags": ["ISO26262", "HIL", "ASPICE", "V model", "Agile"],
       "skills":[
-        "c++", "python", "agile", "jira", "software testing", "Artifical Intelligence"
+        "c++", "python", "jira", "software testing", "Artifical Intelligence"
       ]
     },
     {
@@ -80,6 +86,7 @@
         "Work and maintanence instructions",
         "Problem handling and solving"
       ],
+      "tags": ["SPC", "IGBT", "Soldering"],
       "skills":[
         "physics", "vacuum technology", "Statistical Process Control (SPC)"
       ]

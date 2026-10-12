@@ -1,6 +1,6 @@
 .layout {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) 3fr;
+  grid-template-columns: minmax(230px, 1fr) 3fr;
   gap: 1.5rem;
   min-height: 100vh;
 }
@@ -78,6 +78,25 @@
   color: #666;
   white-space: nowrap;
 }
+
+.job-card__tags {
+    background-color:#ddd;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+trait-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+trait-list li::before {
+  content: "★";
+  color:darkgreen;
+  margin-right: 0.5em;
+}
+
 
 @media (max-width: 600px) {
   .job-card__header {

@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <title>The Portfolio</title>
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script defer src="./js/progressbar.js"></script>
   <script defer src="./js/app.js"></script>
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/cert-cards.css">
+  <link rel="stylesheet" href="css/edu-cards.css">
 </head>
 <body>
     <div class="layout" id="app">
@@ -13,6 +18,7 @@
           <h2> {{ name }} </h2>
           <p> {{ title  }}</p>
           <p><i class="fa-solid fa-location-dot"></i> {{ location }}</p>
+          <p><i class="fa-regular fa-calendar"></i> {{ date_of_birth }}</p>
           <p v-if="linkedin_url">
               <i class="fa-brands fa-linkedin"></i>
             <a :href="linkedin_url" target="_blank" rel="noopener noreferrer">
@@ -22,6 +28,18 @@
           <p v-if="email">
               <i class="fa-solid fa-at"></i> {{ email }}
           </p>
+          <div v-if="about.length">
+              <h3> About me </h3>
+              {{ about }}
+          </div>
+          <div v-if="traits.length">
+              <h3> Traits </h3>
+              <trait-list>
+                  <li v-for="trait in traits" :key="trait">
+                      {{ trait }}
+                  </li>
+              </trait-list>
+          </div>
         </aside>
         <main class="events">
             <h1><i class="fa-solid fa-business-time"></i>Work Experience</h1>
@@ -29,7 +47,11 @@
               <article class="job-card" v-for="job in jobs" :key="job.company + job.start_date">
                 <header class="job-card__header">
                   <div>
-                    <h2>{{ job.position }}</h2>
+                    <h2> LVL{{get_exp_level(job.start_date, job.end_date)}} {{ job.position }}</h2>
+                    <progress-bar
+                        :label="job.position"
+                        :percentage="get_progress_on_date_level(job.start_date, job.end_date)"
+                    ></progress-bar>
                     <a v-if="job.url" :href="job.url" target="_blank" rel="noopener noreferrer">
                       {{ job.company }}
                     </a>
@@ -48,25 +70,17 @@
                     {{ highlight }}
                   </li>
                 </ul>
+                <div>
+                    <p><span v-for="tag in job.tags" :key="tag" class="job-card__tags"> {{ tag }} </span></p>
+                </div>
                 <div v-for="skill in job.skills">
                     <div class="skill__labels">
-                      <span>{{ skill }}</span>
-                      <span>{{ get_level_label(get_skill_level(skill)) }}</span>
+                      <span>{{ skill }} [{{ get_level_label(get_skill_level(skill)) }}]</span>
                     </div>
-
-                    <div
-                      class="skill__track"
-                      role="progressbar"
-                      :aria-label="skill"
-                      :aria-valuenow="get_skill_level(skill)"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    >
-                      <div
-                        class="skill__fill"
-                        :style="{ width: get_skill_level(skill) + '%' }"
-                      ></div>
-                    </div>
+                    <progress-bar
+                        :label="skill"
+                        :percentage="get_skill_level(skill)"
+                    ></progress-bar>
                 </div>
               </article>
             </section>
@@ -116,12 +130,13 @@
                 </div>
               </article>
             </section>
+            <h1><i class="fa-solid fa-star"></i> Certifications</h1>
             <section class="certification-list">
-                <article class="certification-card" v-for="certification in certifications">
+                <article class="certification-card" v-for="certification in certifications" :key="certification.category">
                     <div>
                         <h2 class="certification-card__header"> {{ certification.category }}</h2>
                         <div class="certification-levels">
-                            <div v-for="level in certification.levels" class="certification-level-card">
+                            <div v-for="level in certification.levels" class="certification-level-card" :key="level.id">
                                 <header class="certification-level-card__header"> {{ level.name }} </header>
                                 <p> <i class="fa-regular fa-calendar-check"></i> {{ level.date }} </p>
                                 <p> <i class="fa-solid fa-award"></i> {{ level.id }} </p>
@@ -134,8 +149,4 @@
     </div>
 
 </body>
-<!-- Stylesheet -->
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/edu-cards.css">
-<link rel="stylesheet" href="css/cert-cards.css">
 </html>
