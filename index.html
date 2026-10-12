@@ -71,7 +71,7 @@
                   </li>
                 </ul>
                 <div>
-                    <p><span v-for="tag in job.tags" :key="tag" class="job-card__tags"> {{ tag }} </span></p>
+                    <p><button v-for="tag in job.tags" :key="tag" class="job-card__tags"> {{ tag }} </button></p>
                 </div>
                 <div v-for="skill in job.skills">
                     <div class="skill__labels">
