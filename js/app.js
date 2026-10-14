@@ -1,6 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
+      fancy: true,
       name: '',
       title: '',
       location: '',
@@ -9,6 +10,7 @@ const app = Vue.createApp({
       email: '',
       about: '',
       traits: [],
+      languages: [],
       jobs: [],
       skills: [],
       certifications: []
@@ -46,7 +48,7 @@ const app = Vue.createApp({
       return (this.get_date_level(start_date, end_date) % 1) * 100;
     },
     get_end_date(job) {
-      if (job.end_date == "Present") {
+      if (job.end_date == "Present" && this.fancy) {
         return this.days_since(job.start_date) + ' days';
       }
       return job.end_date;
@@ -79,6 +81,7 @@ const app = Vue.createApp({
       this.email = portfolio.email;
       this.about = portfolio.about;
       this.traits = portfolio.traits;
+      this.languages = portfolio.languages;
       this.jobs = portfolio.work_experience;
       this.skills = portfolio.skills;
       this.education = portfolio.education;

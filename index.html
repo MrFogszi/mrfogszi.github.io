@@ -13,139 +13,160 @@
   <link rel="stylesheet" href="css/edu-cards.css">
 </head>
 <body>
-    <div class="layout" id="app">
-        <aside class="overview">
-          <h2> {{ name }} </h2>
-          <p> {{ title  }}</p>
-          <p><i class="fa-solid fa-location-dot"></i> {{ location }}</p>
-          <p><i class="fa-regular fa-calendar"></i> {{ date_of_birth }}</p>
-          <p v-if="linkedin_url">
-              <i class="fa-brands fa-linkedin"></i>
-            <a :href="linkedin_url" target="_blank" rel="noopener noreferrer">
-              {{ name }}
-            </a>
-          </p>
-          <p v-if="email">
-              <i class="fa-solid fa-at"></i> {{ email }}
-          </p>
-          <div v-if="about.length">
-              <h3> About me </h3>
-              {{ about }}
-          </div>
-          <div v-if="traits.length">
-              <h3> Traits </h3>
-              <trait-list>
-                  <li v-for="trait in traits" :key="trait">
-                      {{ trait }}
-                  </li>
-              </trait-list>
-          </div>
-        </aside>
-        <main class="events">
-            <h1><i class="fa-solid fa-business-time"></i>Work Experience</h1>
-            <section class="job-list">
-              <article class="job-card" v-for="job in jobs" :key="job.company + job.start_date">
-                <header class="job-card__header">
-                  <div>
-                    <h2> LVL{{get_exp_level(job.start_date, job.end_date)}} {{ job.position }}</h2>
-                    <progress-bar
-                        :label="job.position"
-                        :percentage="get_progress_on_date_level(job.start_date, job.end_date)"
-                    ></progress-bar>
-                    <a v-if="job.url" :href="job.url" target="_blank" rel="noopener noreferrer">
-                      {{ job.company }}
-                    </a>
-                    <h3 v-else>{{ job.company }}</h3>
+    <div id="app">
+        <div :class="fancy ? 'layout fancy' : 'layout printable'" >
+            <aside class="overview">
+                <button @click="fancy = !fancy" class="non-printable">
+                   Switch to {{ fancy ? 'printable' : 'fancy' }} version
+                 </button>
+              <h2> {{ name }} </h2>
+              <p class="sideInfo"> {{ title  }}</p>
+              <p class="sideInfo"><i class="fa-solid fa-location-dot"></i> {{ location }}</p>
+              <p class="sideInfo"><i class="fa-regular fa-calendar"></i> {{ date_of_birth }}</p>
+              <p v-if="linkedin_url" class="sideInfo">
+                  <i class="fa-brands fa-linkedin"></i>
+                <a :href="linkedin_url" target="_blank" rel="noopener noreferrer">
+                  {{ name }}
+                </a>
+              </p>
+              <p v-if="email" class="sideInfo">
+                  <i class="fa-solid fa-at"></i> {{ email }}
+              </p>
+              <div v-if="about.length">
+                  <h3 class="infoSection"> About me </h3>
+                  {{ about }}
+              </div>
+              <div v-if="traits.length">
+                  <h3 class="infoSection"> Traits </h3>
+                  <trait-list>
+                      <li v-for="trait in traits" :key="trait">
+                          {{ trait }}
+                      </li>
+                  </trait-list>
+              </div>
+              <div v-if="!fancy">
+                  <h3 class="infoSection"> Skills </h3>
+                  <div v-for="skill in skills" :key="skill">
+                      <div class="skill__labels">
+                        <span>{{ skill.name }} [{{ get_level_label(skill.level) }}]</span>
+                      </div>
                   </div>
+              </div>
+              <div v-if="languages.length">
+                  <h3 class="infoSection"> Spoken languages </h3>
+                  <language-list>
+                      <li v-for="language in languages" :key="language">
+                          {{ language.name }} [{{ language.level }}]
+                      </li>
+                  </language-list>
+              </div>
+            </aside>
+            <main class="events">
+                <h2 class="sectionHeader"><i class="fa-solid fa-business-time"></i>Work Experience</h2>
+                <section class="job-list">
+                  <article class="job-card" v-for="job in jobs" :key="job.company + job.start_date">
+                    <header class="job-card__header">
+                      <div>
+                        <h2 class="sectionHeader"> LVL{{get_exp_level(job.start_date, job.end_date)}} {{ job.position }}</h2>
+                        <progress-bar
+                            :label="job.position"
+                            :percentage="get_progress_on_date_level(job.start_date, job.end_date)"
+                        ></progress-bar>
+                        <a v-if="job.url" :href="job.url" target="_blank" rel="noopener noreferrer">
+                          {{ job.company }}
+                        </a>
+                        <h3 v-else>{{ job.company }}</h3>
+                      </div>
 
-                  <p class="job-card__dates">
-                    {{ job.start_date }} – {{ get_end_date(job) }}
-                  </p>
-                </header>
+                      <p class="job-card__dates">
+                        {{ job.start_date }} – {{ get_end_date(job) }}
+                      </p>
+                    </header>
 
-                <p>{{ job.summary }}</p>
+                    <p class="job-card__summary">{{ job.summary }}</p>
 
-                <ul>
-                  <li v-for="highlight in job.highlights" :key="highlight">
-                    {{ highlight }}
-                  </li>
-                </ul>
-                <div>
-                    <p><button v-for="tag in job.tags" :key="tag" class="job-card__tags"> {{ tag }} </button></p>
-                </div>
-                <div v-for="skill in job.skills">
-                    <div class="skill__labels">
-                      <span>{{ skill }} [{{ get_level_label(get_skill_level(skill)) }}]</span>
-                    </div>
-                    <progress-bar
-                        :label="skill"
-                        :percentage="get_skill_level(skill)"
-                    ></progress-bar>
-                </div>
-              </article>
-            </section>
-            <h1><i class="fa-solid fa-graduation-cap"></i> Education</h1>
-            <section class="education-list">
-              <article
-                class="education-card"
-                v-for="school in education"
-                :key="school.institution + school.graduation_date"
-              >
-                <header class="education-card__header">
-                  <div>
-                    <h2 v-if="!school.url">{{ school.institution }}</h2>
-                    <h2 v-else>
-                      <a :href="school.url" target="_blank" rel="noopener noreferrer">
-                        {{ school.institution }}
-                      </a>
-                    </h2>
-                    <p class="education-card__location">{{ school.location }}</p>
-                  </div>
-
-                  <p class="education-card__date">
-                    <i class="fa-regular fa-calendar-check"></i> {{ school.graduation_date }}
-                  </p>
-                </header>
-
-                <p v-for="degree in school.degrees" :key="degree" class="education-card__degrees">
-                <i class="fa-solid fa-building-columns"></i> {{ degree }}
-                </p>
-
-                <ul v-if="school.honors.length" class="education-card__honors">
-                  <li v-for="honor in school.honors" :key="honor">
-                    {{ honor }}
-                  </li>
-                </ul>
-                <div v-if="school.thesis" class="education-card__thesis">
-                  <h3>Thesis</h3>
-
-                  <p v-if="!school.thesis.url">{{ school.thesis.title }}</p>
-                  <p v-else>
-                    <a :href="school.thesis.url" target="_blank" rel="noopener noreferrer">
-                      {{ school.thesis.title }}
-                    </a>
-                  </p>
-
-                  <p v-if="school.thesis.summary">{{ school.thesis.summary }}</p>
-                </div>
-              </article>
-            </section>
-            <h1><i class="fa-solid fa-star"></i> Certifications</h1>
-            <section class="certification-list">
-                <article class="certification-card" v-for="certification in certifications" :key="certification.category">
+                    <ul class="job-card__highlights">
+                      <li v-for="highlight in job.highlights" :key="highlight">
+                        {{ highlight }}
+                      </li>
+                    </ul>
                     <div>
-                        <h2 class="certification-card__header"> {{ certification.category }}</h2>
-                        <div class="certification-levels">
-                            <div v-for="level in certification.levels" class="certification-level-card" :key="level.id">
-                                <header class="certification-level-card__header"> {{ level.name }} </header>
-                                <p> <i class="fa-regular fa-calendar-check"></i> {{ level.date }} </p>
-                                <p> <i class="fa-solid fa-award"></i> {{ level.id }} </p>
+                        <p><button v-for="tag in job.tags" :key="tag" class="job-card__tags"> {{ tag }} </button></p>
+                    </div>
+                    <div v-if="fancy" v-for="skill in job.skills">
+                        <div class="skill__labels">
+                          <span>{{ skill }} [{{ get_level_label(get_skill_level(skill)) }}]</span>
+                        </div>
+                        <progress-bar
+                            :label="skill"
+                            :percentage="get_skill_level(skill)"
+                        ></progress-bar>
+                    </div>
+                  </article>
+                </section>
+                <h2 class="sectionHeader"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+                <section class="education-list">
+                  <article
+                    class="education-card"
+                    v-for="school in education"
+                    :key="school.institution + school.graduation_date"
+                  >
+                    <header class="education-card__header">
+                      <div>
+                        <h2 v-if="!school.url">{{ school.institution }}</h2>
+                        <h2 v-else>
+                          <a :href="school.url" target="_blank" rel="noopener noreferrer">
+                            {{ school.institution }}
+                          </a>
+                        </h2>
+                        <p class="education-card__location">{{ school.location }}</p>
+                      </div>
+
+                      <p class="education-card__date">
+                        <i class="fa-regular fa-calendar-check"></i> {{ school.graduation_date }}
+                      </p>
+                    </header>
+
+                    <p v-for="degree in school.degrees" :key="degree" class="education-card__degrees">
+                    <i class="fa-solid fa-building-columns"></i> {{ degree }}
+                    </p>
+
+                    <ul v-if="school.honors.length" class="education-card__honors">
+                      <li v-for="honor in school.honors" :key="honor">
+                        {{ honor }}
+                      </li>
+                    </ul>
+                    <div v-if="school.thesis" class="education-card__thesis">
+                        <h3 v-if="fancy">Thesis</h3>
+                      <span v-if="!fancy">Thesis: </span>
+                      <span v-if="!school.thesis.url">{{ school.thesis.title }}</span>
+                      <span v-else>
+                        <a :href="school.thesis.url" target="_blank" rel="noopener noreferrer">
+                          {{ school.thesis.title }}
+                        </a>
+                      </span>
+
+                      <p v-if="school.thesis.summary">{{ school.thesis.summary }}</p>
+                    </div>
+                  </article>
+                </section>
+                <section class="certification-list">
+                    <h2 class="sectionHeader"><i class="fa-solid fa-star"></i> Certifications</h2>
+                    <article class="certification-card" v-for="certification in certifications" :key="certification.category">
+                        <div>
+                            <h2 class="certification-card__header"> {{ certification.category }}</h2>
+                            <div class="certification-levels">
+                                <div v-for="level in certification.levels" class="certification-level-card" :key="level.id">
+                                    <header class="certification-level-card__header"> {{ level.name }} </header>
+                                    <p class="certification-level-card__info"> <i class="fa-regular fa-calendar-check"></i> {{ level.date }} </p>
+                                    <p class="certification-level-card__info"> <i class="fa-solid fa-award"></i> {{ level.id }} </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </article>
-            </section>
-        </main>
+                    </article>
+                </section>
+            </main>
+        </div>
     </div>
 
 </body>

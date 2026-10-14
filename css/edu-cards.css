@@ -1,10 +1,10 @@
-.education-list {
+.fancy .education-list {
   display: grid;
   gap: 1rem;
   max-width: 760px;
 }
 
-.education-card {
+.fancy .education-card {
   padding: 1.25rem;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -12,29 +12,70 @@
   box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
 }
 
-.education-card__header {
+.fancy .education-card__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
 }
 
-.education-card h2 {
+.fancy .education-card h2 {
   margin: 0 0 0.35rem;
   font-size: 1.15rem;
 }
 
-.education-card__location,
-.education-card__date {
+.fancy .education-card__location,
+.fancy .education-card__date {
   margin: 0;
   color: #666;
 }
 
-.education-card__degrees {
+.fancy .education-card__degrees {
   margin-bottom: 0;
 }
 
-.education-card__honors {
+.fancy .education-card__honors {
+  color: #555;
+  font-style: italic;
+}
+
+/*Printable version*/
+.printable .education-list {
+  display: grid;
+  gap: 1rem;
+  max-width: 760px;
+}
+
+.printable .education-card {
+  padding: 0em;
+  border-bottom: 5px solid var(--main-color);
+  background: #fff;
+  box-shadow: none;
+}
+
+.printable .education-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.printable .education-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.printable .education-card__location,
+.printable .education-card__date {
+  margin: 0;
+  color: #666;
+}
+
+.printable .education-card__degrees {
+  margin-bottom: 0;
+}
+
+.printable .education-card__honors {
   color: #555;
   font-style: italic;
 }

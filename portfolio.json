@@ -6,6 +6,17 @@
   "linkedin_url": "https://www.linkedin.com/in/roland-ker%C3%A9kgy%C3%A1rt%C3%B3-b46793140/",
   "email": "roland.kerekgyarto@gmail.com",
   "about": "Software test engineer by profession, physicist by training. I bring an analytical mindset and a practical, detail-oriented approach to solving problems. Curious and adaptable, I’m eager to keep learning and take on new challenges across different fields.",
+  "tags": ["Linux", "SVN"],
+  "languages": [
+    {
+      "name": "German",
+      "level": "B2"
+    },
+    {
+      "name": "English",
+      "level": "B2"
+    }
+  ],
   "traits": [
     "Innovative",
     "Good problem solution",
@@ -67,7 +78,7 @@
          "Working with AI",
          "Developing AI assisted tools"
       ],
-      "tags": ["ISO26262", "HIL", "ASPICE", "V model", "Agile"],
+      "tags": ["ISO26262", "HIL", "ASPICE", "V model", "Agile", "CI/CD", "Git", "Polarion", "Test Automation"],
       "skills":[
         "c++", "python", "jira", "software testing", "Artifical Intelligence"
       ]

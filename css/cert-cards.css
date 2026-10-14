@@ -1,10 +1,10 @@
-.certification-list {
+.fancy .certification-list {
   display: grid;
   gap: 1rem;
   max-width: 760px;
 }
 
-.certification-card {
+.fancy .certification-card {
   padding: 1.25rem;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -12,13 +12,13 @@
   box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
 }
 
-.certification-levels {
+.fancy .certification-levels {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
   gap: 1rem;
 }
 
-.certification-level-card {
+.fancy .certification-level-card {
   padding: 1.25rem;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -26,26 +26,87 @@
   box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
 }
 
-.certification-level-card__header,
-.certification-card__header {
+.fancy .certification-level-card__header,
+.fancy .certification-card__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
 }
 
-.certification-card h2 {
+.fancy .certification-card h2 {
   margin: 0 0 0.35rem;
   font-size: 1.15rem;
 }
 
-.certification-card__location,
-.certification-card__date {
+.fancy .certification-card__location,
+.fancy .certification-card__date {
   margin: 0;
   color: #666;
 }
 
-.certification-card__degrees {
+.fancy .certification-card__degrees {
+  margin-bottom: 0;
+}
+
+/* Printable */
+.printable .certification-list {
+  display: block;
+  gap: 1rem;
+  max-width: 450px;
+}
+
+.printable .certification-card {
+  padding: 0em;
+  border: 0px solid #ddd;
+  border-radius: 0px;
+  border-bottom: 1px dashed #ddd;
+  background: #fff;
+  box-shadow: none;
+}
+
+.printable .certification-levels {
+  display: block;
+  gap: 0em;
+  padding-left: 1.5rem;
+}
+
+.printable .certification-level-card {
+  padding: 0em;
+  border: 0px solid #ddd;
+  border-radius: 0px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.printable .certification-level-card__header,
+.printable .certification-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.printable .certification-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.printable .certification-card__location,
+.printable .certification-card__date {
+  margin: 0;
+  color: #666;
+}
+
+.printable .certification-level-card__info{
+    display: inline;
+}
+
+.printable .certification-level-card__info::before{
+    content: " - ";
+}
+
+.printable .certification-card__degrees {
   margin-bottom: 0;
 }
 

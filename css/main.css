@@ -1,3 +1,7 @@
+:root{
+    --main-color: forestgreen;
+}
+/* Shared layout */
 .layout {
   display: grid;
   grid-template-columns: minmax(230px, 1fr) 3fr;
@@ -5,24 +9,20 @@
   min-height: 100vh;
 }
 
+body .fancy {
+    font-size: 16px;
+}
+
 .overview,
 .events {
   padding: 1.5rem;
-}
-
-.overview {
-  background: #f3f4f6;
-}
-
-.events {
-  background: white;
 }
 
 .skill {
   margin-bottom: 1rem;
 }
 
-.skill__labels {
+.fancy .skill__labels {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.35rem;
@@ -52,8 +52,6 @@
   padding: 1.25rem;
   border: 1px solid #ddd;
   border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
 }
 
 .job-card__header {
@@ -75,38 +73,179 @@
 
 .job-card__dates {
   margin: 0;
-  color: #666;
   white-space: nowrap;
 }
 
 .job-card__tags {
-    background-color:#ddd;
-    margin-right: 5px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+  margin-right: 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
 }
 
+language-list,
 trait-list {
   list-style: none;
   padding-left: 0;
 }
 
+language-list li::before,
 trait-list li::before {
   content: "★";
-  color:darkgreen;
   margin-right: 0.5em;
 }
 
+/* Fancy version */
+.layout.fancy {
+  color: #183153;
+  font-family: Arial, sans-serif;
+}
 
+.fancy .sectionHeader {
+    font-size: 24px;
+    margin-bottom: 19.92px;
+}
+
+.fancy .sideInfo {
+    font-size: 16px;
+    margin: 16px;
+}
+
+.fancy .overview {
+  background: #f3f4f6;
+}
+
+.fancy .events,
+.fancy .job-card {
+  background: white;
+}
+
+.fancy .job-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  padding-bottom: 20px;
+}
+
+.fancy .skill__fill {
+  background: #3b82f6;
+}
+
+.fancy language-list li::before,
+.fancy trait-list li::before {
+  color: var(--main-color);
+}
+
+.fancy .job-card__tags {
+  background-color: #ddd;
+}
+
+/* Printable version */
+.layout.printable {
+    grid-template-columns: minmax(100px, 1fr) 3fr;
+  color: #111;
+  background: #fff;
+  font-family: Georgia, serif;
+}
+
+.printable .sectionHeader {
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+.fancy .sideInfo {
+    font-size: 14px;
+    margin: 2px;
+}
+
+.printable .infoSection{
+    font-size: 16px;
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+}
+
+.printable .skill__labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0em;
+}
+
+.printable .overview,
+.printable .events,
+.printable .job-card {
+  color: #111;
+  background: #fff;
+}
+
+.printable .job-card {
+    border: 0px;
+    border-radius: 0px;
+  border-bottom: 3px solid var(--main-color);
+  box-shadow: none;
+  break-inside: avoid;
+  padding-bottom: 0px;
+}
+
+.printable .skill__track {
+   display: none;
+}
+
+.printable .skill__fill {
+  display: none;
+}
+
+.printable language-list li::before,
+.printable trait-list li::before {
+  color: #111;
+}
+
+.printable .job-card__tags {
+  background: transparent;
+}
+
+.printable .job-card__summary{
+    margin-bottom: 0px;
+}
+
+.printable .job-card__highlights{
+    margin-top: 0px;
+}
+
+/* Responsive layout */
 @media (max-width: 600px) {
-  .job-card__header {
-    flex-direction: column;
-  }
   .layout {
     grid-template-columns: 1fr;
   }
 
+  .job-card__header {
+    flex-direction: column;
+  }
+
   .job-card__dates {
     white-space: normal;
+  }
+}
+
+body .printable {
+    font-size: 14px;
+}
+
+@media print {
+    .non-printable{
+        display: none;
+    }
+  .layout {
+    min-height: 0;
+    color: #000;
+    background: #fff;
+  }
+
+  .overview,
+  .events {
+    padding: 0.5rem 0;
+    background: #fff;
+  }
+
+  .job-card {
+    box-shadow: none;
+    break-inside: avoid;
   }
 }
