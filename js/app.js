@@ -64,10 +64,22 @@ const app = Vue.createApp({
         skill => skill.name === skill_name
       );
       return skill ? skill.level : 0;
+    },
+    setFancyMode() {
+      this.fancy = true;
+    },
+    setPrintMode() {
+      this.fancy = false;
     }
+  },
+  beforeUnmount() {
+    window.removeEventListener("beforeprint", this.setPrintMode);
+    window.removeEventListener("afterprint", this.setFancyMode);
   },
 
   async mounted() {
+    window.addEventListener("beforeprint", this.setPrintMode);
+    window.addEventListener("afterprint", this.setFancyMode);
     try {
       const response = await fetch('./portfolio.json');
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
