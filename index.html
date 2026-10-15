@@ -16,7 +16,7 @@
     <div id="app">
         <div :class="fancy ? 'layout fancy' : 'layout printable'" >
             <aside class="overview">
-                <button @click="fancy = !fancy" class="non-printable">
+                <button @click="fancy = !fancy" class="switchButton non-printable">
                    Switch to {{ fancy ? 'printable' : 'fancy' }} version
                  </button>
               <h2> {{ name }} </h2>

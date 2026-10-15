@@ -94,6 +94,44 @@ trait-list li::before {
   margin-right: 0.5em;
 }
 
+.switchButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.6rem;
+  background: #fff;
+  color: #334155;
+  font: 600 0.9rem/1.2 system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgb(15 23 42 / 8%);
+  transition: background-color 160ms ease, border-color 160ms ease,
+              color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+
+.fancy .education-card:hover,
+.fancy .certification-card:hover,
+.fancy .job-card:hover,
+.switchButton:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+  box-shadow: 0 4px 10px rgb(15 23 42 / 12%);
+  transform: translateY(-1px);
+}
+
+.switchButton:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 3px;
+}
+
+.switchButton:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgb(15 23 42 / 10%);
+}
+
 /* Fancy version */
 .layout.fancy {
   color: #183153;
@@ -142,6 +180,7 @@ trait-list li::before {
 .layout.printable {
     grid-template-columns: minmax(100px, 1fr) 3fr;
   color: #111;
+  gap: 0em;
   background: #fff;
   font-family: Georgia, serif;
 }
@@ -155,6 +194,8 @@ trait-list li::before {
     font-size: 14px;
     margin: 2px;
 }
+
+/*Printable version*/
 
 .printable .infoSection{
     font-size: 16px;
@@ -173,6 +214,11 @@ trait-list li::before {
 .printable .job-card {
   color: #111;
   background: #fff;
+}
+
+.printable .overview,
+.printable .events {
+    padding: 0em;
 }
 
 .printable .job-card {
