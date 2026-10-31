@@ -132,7 +132,23 @@ trait-list li::before {
   box-shadow: 0 1px 3px rgb(15 23 42 / 10%);
 }
 
+.imageCircle {
+  width: 140px;
+  height: 140px;
+  border: 2px solid var(--main-color);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.imageCircle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* Fancy version */
+
 .layout.fancy {
   color: #183153;
   font-family: Arial, sans-serif;
@@ -144,8 +160,8 @@ trait-list li::before {
 }
 
 .fancy .sideInfo {
-    font-size: 16px;
-    margin: 16px;
+    font-size: 14px;
+    margin: 2px;
 }
 
 .fancy .overview {
@@ -209,8 +225,8 @@ trait-list li::before {
     margin-bottom: 0px;
 }
 
-.fancy .sideInfo {
-    font-size: 14px;
+.printable .sideInfo {
+    font-size: 11px;
     margin: 2px;
 }
 
@@ -294,6 +310,11 @@ body .printable {
 }
 
 @media print {
+    @page {
+        margin: 5mm;
+        margin-left: 2mm;
+        margin-right: 2mm;
+    }
     .non-printable{
         display: none;
     }

@@ -1,9 +1,11 @@
 {
   "name": "Roland Kerékgyártó",
+  "profile_image": "img/image.jfif",
   "title": "Software Test Engineer at thyssenkrupp",
   "location": "Budapest, Hungary",
   "date_of_birth": "1993-03-16",
   "linkedin_url": "https://www.linkedin.com/in/roland-ker%C3%A9kgy%C3%A1rt%C3%B3-b46793140/",
+  "web_page": "https://mrfogszi.github.io",
   "email": "roland.kerekgyarto@gmail.com",
   "about": "Software test engineer by profession, physicist by training. I bring an analytical mindset and a practical, detail-oriented approach to solving problems. Curious and adaptable, I’m eager to keep learning and take on new challenges across different fields.",
   "tags": ["Linux", "SVN"],

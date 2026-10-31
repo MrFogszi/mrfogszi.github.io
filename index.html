@@ -16,9 +16,14 @@
     <div id="app">
         <div :class="fancy ? 'layout fancy' : 'layout printable'" >
             <aside class="overview">
-                <button @click="fancy = !fancy" class="switchButton non-printable">
+                <button @click="fancy = !fancy" class="switchButton non-printable" style="display: none;">
                    Switch to {{ fancy ? 'printable' : 'fancy' }} version
                  </button>
+                 <div v-if="profile_image">
+                     <div class="imageCircle">
+                         <img :src="profile_image" alt="Yepp, that's me">
+                     </div>
+                 </div>
               <h2> {{ name }} </h2>
               <p class="sideInfo"> {{ title  }}</p>
               <p class="sideInfo"><i class="fa-solid fa-location-dot"></i> {{ location }}</p>
@@ -29,8 +34,17 @@
                   {{ name }}
                 </a>
               </p>
+              <p v-if="web_page" class="sideInfo">
+                  <i class="fa-solid fa-earth-europe"></i>
+                  <a :href="web_page" target="_blank" rel="noopener noreferrer">
+                      Web Page
+                  </a>
+              </p>
               <p v-if="email" class="sideInfo">
-                  <i class="fa-solid fa-at"></i> {{ email }}
+                  <i class="fa-solid fa-at"></i>
+                  <a :href="mailTo()">
+                      {{ email }}
+                  </a>
               </p>
               <div v-if="about.length">
                   <h3 class="infoSection"> About me </h3>

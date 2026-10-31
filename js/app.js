@@ -6,7 +6,9 @@ const app = Vue.createApp({
       title: '',
       location: '',
       date_of_birth: '',
+      profile_image: '',
       linkedin_url: '',
+      web_page: '',
       email: '',
       about: '',
       traits: [],
@@ -70,6 +72,9 @@ const app = Vue.createApp({
     },
     setPrintMode() {
       this.fancy = false;
+    },
+    mailTo() {
+      return "mailto:" + this.email;
     }
   },
   beforeUnmount() {
@@ -86,10 +91,12 @@ const app = Vue.createApp({
 
       const portfolio = await response.json();
       this.name = portfolio.name;
+      this.profile_image = portfolio.profile_image;
       this.title = portfolio.title;
       this.date_of_birth = portfolio.date_of_birth;
       this.location = portfolio.location;
       this.linkedin_url = portfolio.linkedin_url;
+      this.web_page = portfolio.web_page;
       this.email = portfolio.email;
       this.about = portfolio.about;
       this.traits = portfolio.traits;
