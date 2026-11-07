@@ -133,8 +133,8 @@ trait-list li::before {
 }
 
 .imageCircle {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border: 2px solid var(--main-color);
   border-radius: 50%;
   overflow: hidden;

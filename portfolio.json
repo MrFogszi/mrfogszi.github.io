@@ -1,6 +1,6 @@
 {
   "name": "Roland Kerékgyártó",
-  "profile_image": "img/image.jfif",
+  "profile_image": "img/profile.jpeg",
   "title": "Software Test Engineer at thyssenkrupp",
   "location": "Budapest, Hungary",
   "date_of_birth": "1993-03-16",
@@ -28,36 +28,36 @@
   ],
   "skills":[
     {
-      "name": "c++",
-      "level": 60
+      "name": "c/c++",
+      "level": 80
     },
     {
       "name": "python",
-      "level": 80
+      "level": 100
     },
     {
       "name": "jira",
-      "level": 70
+      "level": 100
     },
     {
       "name": "software testing",
-      "level": 90
+      "level": 100
     },
     {
       "name": "physics",
-      "level": 80
+      "level": 20
     },
     {
       "name": "vacuum technology",
-      "level": 60
+      "level": 20
     },
     {
       "name": "Statistical Process Control (SPC)",
-      "level": 50
+      "level": 20
     },
     {
       "name": "Artifical Intelligence",
-      "level": 40
+      "level": 60
     }
   ],
   "work_experience": [
@@ -82,7 +82,7 @@
       ],
       "tags": ["ISO26262", "HIL", "ASPICE", "V model", "Agile", "CI/CD", "Git", "Polarion", "Test Automation"],
       "skills":[
-        "c++", "python", "jira", "software testing", "Artifical Intelligence"
+        "c/c++", "python", "jira", "software testing", "Artifical Intelligence"
       ]
     },
     {

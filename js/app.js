@@ -56,10 +56,10 @@ const app = Vue.createApp({
       return job.end_date;
     },
     get_level_label(level) {
-      if (level < 25) return "Beginner";
-      if (level < 50) return "Developing";
-      if (level < 75) return "Proficient";
-      return "Advanced";
+      if (level <= 40) return "Previously used";
+      if (level <= 60) return "Occasionally";
+      if (level <= 80) return "Regularly";
+      return "Daily";
     },
     get_skill_level(skill_name) {
       const skill = this.skills.find(
